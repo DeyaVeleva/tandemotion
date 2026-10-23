@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from profiles.models import CoachProfile, AthleteProfile
+
+admin.site.register(CoachProfile)
+admin.site.register(AthleteProfile)
