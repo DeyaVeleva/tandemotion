@@ -7,13 +7,6 @@ from trainings.models import Training
 
 class BaseReview(models.Model):
     title = models.CharField(max_length=100)
-    rating = models.PositiveIntegerField(
-        default=0,
-        validators=[
-            MinValueValidator(1),
-            MaxValueValidator(10)
-        ],
-    )
     training = models.ForeignKey(
         Training,
         on_delete=models.CASCADE,
@@ -28,6 +21,13 @@ class BaseReview(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class AthleteReflection(BaseReview):
+    rating = models.PositiveIntegerField(
+        default=0,
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(10)
+        ],
+    )
     main_goals = models.TextField()
     reflection = models.TextField()
     author = models.ForeignKey(AthleteProfile, on_delete=models.CASCADE)
