@@ -10,8 +10,8 @@ class AthleteReflectionForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
             'rating':forms.NumberInput(attrs={ 'placeholder': 'Rating'}),
-            'main_goals': forms.TextInput(attrs={'placeholder': 'Main Goals'}),
-            'reflection': forms.TextInput(attrs={'placeholder': 'Reflection'}),
+            'main_goals': forms.Textarea(attrs={'placeholder': 'Main Goals'}),
+            'reflection': forms.Textarea(attrs={'placeholder': 'Reflection'}),
             'author': forms.Select(attrs={'placeholder': 'Athlete'}),
         }
         labels = {
@@ -51,13 +51,13 @@ class CoachFeedbackForm(forms.ModelForm):
         exclude = ['created_at', 'updated_at', 'training', 'competition', 'to_athlete'] #click on the athletes reflection
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
-            'feedback': forms.TextInput(attrs={'placeholder': 'Feedback'}),
+            'feedback': forms.Textarea(attrs={'placeholder': 'Feedback'}),
             'author': forms.Select(attrs={'placeholder': 'Coach'}),
         }
         labels = {
             'title': 'Title',
             'feedback': 'Feedback',
-            'author': 'Athlete',
+            'author': 'Coach',
         }
         help_texts = {
             'feedback': 'Type what your feedback is.',

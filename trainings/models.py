@@ -20,7 +20,8 @@ class Training(models.Model):
     athletes = models.ManyToManyField(
         AthleteProfile,
     )
-
+    def __str__(self):
+        return f'{self.title}'
     class Meta:
         ordering = ['-start']
 

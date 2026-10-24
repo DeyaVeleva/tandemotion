@@ -75,7 +75,7 @@ class CoachProfileForm(forms.ModelForm):
             'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
             'sport': forms.TextInput(attrs={'placeholder': "Primary sport"}),
             'specialty': forms.SelectMultiple(attrs={'placeholder': "Specialty"}),
-            'athletes': forms.SelectMultiple(attrs={'placeholder': "Athletes"}),
+            'athletes': forms.Select(attrs={'placeholder': "Athletes"}),
         }
         labels = {
             'first_name': 'First Name',
@@ -102,6 +102,7 @@ class CoachProfileForm(forms.ModelForm):
             'email': {
                 'invalid': 'Please, enter a valid email address.',
                 'required': 'Please, enter an email address.',
+                'unique': 'This email address is already in use.',
             },
             'date_of_birth': {
                 'required': 'Please, enter date of birth.',
@@ -121,7 +122,7 @@ class CoachProfileForm(forms.ModelForm):
         return date_of_birth
 
     def clean(self):
-        cleaned_data = super(CoachProfile, self).clean()
+        cleaned_data = super(CoachProfileForm, self).clean()
         if cleaned_data.get('first_name') and cleaned_data.get('last_name') and cleaned_data.get('first_name') == cleaned_data.get('last_name'):
             raise forms.ValidationError('Please, enter valid names.')
         return cleaned_data

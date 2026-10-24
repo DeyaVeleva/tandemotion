@@ -89,9 +89,9 @@ class CompetitionForm(forms.ModelForm):
         model = Competition
         fields = '__all__'
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'Title'}),
+            'name': forms.TextInput(attrs={'placeholder': "Competition's name"}),
             'sport': forms.TextInput(attrs={'placeholder': 'Sport'}),
-            'category': forms.TextInput(attrs={'placeholder': 'Category'}), #  i will Change when i create the category model
+            'category': forms.TextInput(attrs={'placeholder': 'Category'}),
             'date': forms.DateInput(attrs={'type': 'date'}),
             'location': forms.TextInput(attrs={'placeholder': 'Location'}),
             'description': forms.Textarea(attrs={'placeholder': 'Description'}),
@@ -99,7 +99,7 @@ class CompetitionForm(forms.ModelForm):
             'athletes': forms.SelectMultiple(attrs={'class': 'form-control'}),
         }
         labels = {
-            'title': 'Title',
+            'name': 'Name',
             'sport': 'Sport',
             'category': 'Category',
             'date': 'Date',
@@ -113,7 +113,7 @@ class CompetitionForm(forms.ModelForm):
             'description': 'Type any additional details about the competition.',
         }
         error_messages = {
-            'title': {
+            'name': {
                 'required':'Please enter a title.',
             },
             'sport': {

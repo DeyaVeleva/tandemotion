@@ -1,0 +1,26 @@
+
+{% extends "shared/base.html" %}
+{% load static %}
+
+{% block title %}Page Not Found | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="error-page">
+    <div class="error-content">
+
+        <p class="error-label">TANDEMOTION / 404</p>
+
+        <h1>Looks like you missed your mark.</h1>
+
+        <p class="error-description">
+            The page you're looking for doesn't exist or may have moved.
+            Let's get you back on track.
+        </p>
+
+        <a class="error-button" href="/">
+            Back to Home
+        </a>
+
+    </div>
+</section>
+{% endblock %}
