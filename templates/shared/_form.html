@@ -1,0 +1,11 @@
+{% csrf_token %}
+
+<div class="form-content">
+    {{ form.as_p }}
+</div>
+
+<div class="form-actions">
+    <button type="submit" class="form-button">
+        {{ submit_label|default:"Submit" }}
+    </button>
+</div>

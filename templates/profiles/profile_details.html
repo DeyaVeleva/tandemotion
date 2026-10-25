@@ -1,0 +1,81 @@
+{% extends "shared/base.html" %}
+
+{% block title %}{{ profile.first_name }} {{ profile.last_name }} | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="profile-page">
+    <div class="profile-container">
+
+        <a href="/" class="profile-back">
+            &larr; Back to Home
+        </a>
+
+        <div class="profile-card">
+            <div class="profile-details-layout">
+
+                {% if profile.profile_pic %}
+                    <img
+                        src="{{ profile.profile_pic.url }}"
+                        alt="{{ profile.first_name }} {{ profile.last_name }}"
+                        class="profile-image"
+                    >
+                {% else %}
+                    <div class="profile-placeholder">
+                        {{ profile.first_name|first }}{{ profile.last_name|first }}
+                    </div>
+                {% endif %}
+
+                <div class="profile-info">
+                    <p class="profile-label">TandeMotion / Profile</p>
+
+                    <h1 class="profile-title">
+                        {{ profile.first_name }} {{ profile.last_name }}
+                    </h1>
+
+                    <p class="profile-subtitle">{{ profile.sport }}</p>
+
+                    <div class="profile-fields">
+                        <div class="profile-field">
+                            <span>Email</span>
+                            <p>{{ profile.email }}</p>
+                        </div>
+
+                        <div class="profile-field">
+                            <span>Date of birth</span>
+                            <p>{{ profile.date_of_birth|date:"F j, Y" }}</p>
+                        </div>
+
+                        {% if profile.main_competition_category %}
+                            <div class="profile-field">
+                                <span>Main competition category</span>
+                                <p>{{ profile.main_competition_category }}</p>
+                            </div>
+                        {% endif %}
+
+                        {% if profile.other_competition_categories %}
+                            <div class="profile-field">
+                                <span>Other competition categories</span>
+                                <p>{{ profile.other_competition_categories }}</p>
+                            </div>
+                        {% endif %}
+
+                        {% if profile.specialty %}
+                            <div class="profile-field">
+                                <span>Coaching specialty</span>
+                                <p>{{ profile.get_specialty_display }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="profile-actions">
+                        <a href="{% url edit_url_name profile.pk %}" class="profile-button">Edit Profile</a>
+                        <a href="{% url delete_url_name profile.pk %}" class="profile-button profile-button--secondary">
+                            Delete Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

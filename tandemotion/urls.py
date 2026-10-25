@@ -2,12 +2,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.urls import path
+from django.urls import path, include
 from profiles.views import home_page_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page_view, name='home'),
+    path('', include('profiles.urls')),
 ]
 
 handler404 = 'profiles.views.custom_404'

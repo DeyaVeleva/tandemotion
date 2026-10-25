@@ -74,8 +74,8 @@ class CoachProfileForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'placeholder': "Email address"}),
             'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
             'sport': forms.TextInput(attrs={'placeholder': "Primary sport"}),
-            'specialty': forms.SelectMultiple(attrs={'placeholder': "Specialty"}),
-            'athletes': forms.Select(attrs={'placeholder': "Athletes"}),
+            'specialty': forms.Select(attrs={'placeholder': "Specialty"}),
+            'athletes': forms.SelectMultiple(attrs={'placeholder': "Athletes"}),
         }
         labels = {
             'first_name': 'First Name',

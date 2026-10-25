@@ -1,0 +1,19 @@
+{% extends "shared/base.html" %}
+
+{% block title %}{{ page_title }} | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="form-container">
+    <div class="form-card">
+        <h1 class="form-title">{{ page_title }}</h1>
+
+        <p class="form-description">
+            Enter the information below.
+        </p>
+
+        <form method="post" enctype="multipart/form-data">
+            {% include "shared/_form.html" %}
+        </form>
+    </div>
+</section>
+{% endblock %}

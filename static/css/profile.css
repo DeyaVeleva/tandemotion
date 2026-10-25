@@ -1,0 +1,263 @@
+/* ========================================
+   TANDEMOTION — SHARED PROFILE STYLES
+   ======================================== */
+
+/* Main page layout */
+.profile-page {
+    min-height: 70vh;
+    padding: 50px 5%;
+    background: #f5f7fa;
+}
+
+.profile-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Profile headings */
+.profile-label {
+    margin: 0 0 10px;
+    color: #2471a3;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.profile-title {
+    margin: 0 0 12px;
+    color: #1c2833;
+    font-size: 32px;
+}
+
+.profile-subtitle {
+    margin: 0 0 28px;
+    color: #657786;
+    font-size: 18px;
+}
+
+/* Profile cards and details */
+.profile-card {
+    padding: 36px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.profile-back {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #34495e;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.profile-back:hover {
+    color: #2471a3;
+}
+
+.profile-image,
+.profile-placeholder {
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    border-radius: 12px;
+}
+
+.profile-image {
+    display: block;
+    object-fit: cover;
+}
+
+.profile-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8eef5;
+    color: #34495e;
+    font-size: 42px;
+    font-weight: 700;
+}
+
+/* Profile detail layout */
+.profile-details-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 36px;
+}
+
+.profile-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.profile-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.profile-field {
+    padding: 16px;
+    background: #f5f7fa;
+    border-radius: 10px;
+    overflow-wrap: anywhere;
+}
+
+.profile-field span {
+    display: block;
+    margin-bottom: 8px;
+    color: #657786;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.profile-field p {
+    margin: 0;
+    color: #1c2833;
+    font-size: 15px;
+}
+
+/* Buttons */
+.profile-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.profile-button {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 1px solid #2471a3;
+    border-radius: 8px;
+    background: #2471a3;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profile-button:hover {
+    background: #1b587f;
+}
+
+.profile-button--secondary {
+    background: #fff;
+    color: #2471a3;
+}
+
+.profile-button--secondary:hover {
+    background: #edf4f9;
+}
+
+/* Profile forms */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.profile-form p {
+    margin: 0;
+}
+
+.profile-form label {
+    display: block;
+    margin-bottom: 7px;
+    color: #34495e;
+    font-weight: 600;
+}
+
+.profile-form input:not([type="checkbox"]):not([type="radio"]),
+.profile-form select,
+.profile-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #ccd5df;
+    border-radius: 8px;
+    background: #fff;
+    font: inherit;
+}
+
+.profile-form input:focus,
+.profile-form select:focus,
+.profile-form textarea:focus {
+    border-color: #2471a3;
+    outline: 2px solid #2471a3;
+    outline-offset: 2px;
+}
+
+.profile-form .helptext {
+    display: block;
+    margin-top: 5px;
+    color: #657786;
+    font-size: 13px;
+}
+
+.profile-form .errorlist {
+    color: #b42318;
+}
+
+/* Profile lists */
+.profile-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 280px);
+    justify-content: start;
+    align-items: start;
+    gap: 24px;
+}
+
+.profile-list-item {
+    box-sizing: border-box;
+    width: 280px;
+    padding: 24px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-list-item h2 {
+    margin: 18px 0 8px;
+    color: #1c2833;
+    font-size: 20px;
+}
+
+.profile-list-item p {
+    margin: 6px 0;
+    color: #657786;
+}
+
+/* Center the profile photo */
+.profile-list-item .profile-image,
+.profile-list-item .profile-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Keep the action button centered */
+.profile-list-item .profile-button {
+    margin-top: 16px;
+}
+
+/* Add-profile button */
+.profile-list-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+}

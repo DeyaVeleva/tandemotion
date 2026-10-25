@@ -1,0 +1,253 @@
+/* ==========================
+   UNIVERSAL FORM LAYOUT
+   ========================== */
+
+.form-container {
+    width: min(100% - 32px, 720px);
+    margin: 40px auto;
+}
+
+.form-card {
+    padding: 32px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+
+.form-title {
+    margin: 0 0 10px;
+    color: #243447;
+    font-size: 2rem;
+}
+
+.form-description {
+    margin-bottom: 28px;
+    color: #687586;
+    line-height: 1.6;
+}
+
+/* ==========================
+   FORM FIELDS
+   ========================== */
+
+.form-content p {
+    margin: 0 0 22px;
+}
+
+.form-content label {
+    display: block;
+    margin-bottom: 8px;
+    color: #243447;
+    font-weight: 600;
+}
+
+.form-content input:not([type="checkbox"]):not([type="radio"]),
+.form-content select,
+.form-content textarea {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d5dce5;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #243447;
+    font: inherit;
+}
+
+.form-content textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-content input:focus,
+.form-content select:focus,
+.form-content textarea:focus {
+    outline: none;
+    border-color: #2864a8;
+    box-shadow: 0 0 0 3px rgba(40, 100, 168, 0.14);
+}
+
+.form-content input[type="checkbox"],
+.form-content input[type="radio"] {
+    accent-color: #2864a8;
+}
+
+.form-content input[type="file"] {
+    padding: 8px 0;
+    border: none;
+}
+
+.form-content .helptext {
+    display: block;
+    margin-top: 6px;
+    color: #687586;
+    font-size: 0.875rem;
+}
+
+.form-content .errorlist {
+    margin: 8px 0;
+    padding-left: 20px;
+    color: #b42318;
+    font-size: 0.9rem;
+}
+
+/* ==========================
+   BUTTONS
+   ========================== */
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.form-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #2864a8;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.form-button:hover {
+    background: #1e4f87;
+}
+
+.form-button--secondary {
+    background: #edf1f5;
+    color: #243447;
+}
+
+.form-button--secondary:hover {
+    background: #dce3eb;
+}
+
+/* ==========================
+   RESPONSIVE DESIGN
+   ========================== */
+
+@media (max-width: 600px) {
+    .form-container {
+        width: calc(100% - 24px);
+        margin: 24px auto;
+    }
+
+    .form-card {
+        padding: 22px 18px;
+    }
+
+    .form-title {
+        font-size: 1.6rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Delete confirmation page */
+.delete-page {
+    min-height: 70vh;
+    padding: 50px 5%;
+    background: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-card {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 520px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.delete-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #fdecec;
+    color: #b42318;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.delete-title {
+    margin: 0 0 16px;
+    color: #1c2833;
+    font-size: 28px;
+}
+
+.delete-message {
+    color: #34495e;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.delete-warning {
+    margin-bottom: 28px;
+    color: #b42318;
+    font-size: 14px;
+}
+
+.delete-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.delete-button,
+.delete-cancel-button {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.delete-button {
+    background: #c0392b;
+    color: #fff;
+}
+
+.delete-button:hover {
+    background: #922b21;
+}
+
+.delete-cancel-button {
+    border-color: #ccd5df;
+    background: #fff;
+    color: #34495e;
+}
+
+.delete-cancel-button:hover {
+    background: #f5f7fa;
+}
