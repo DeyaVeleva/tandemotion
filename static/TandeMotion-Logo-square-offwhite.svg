@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+    <rect width="1024" height="1024" fill="#FEFEFA"/>
+    <g transform="translate(512, 512)">
+        <!-- Abstract Interlocking TM Monogram with Momentum Arrow -->
+        <g transform="scale(3.8) translate(-80, -70)">
+            <!-- Outer Geometric 'T' Frame -->
+            <path d="M 20 20 L 110 20 L 110 40 L 78 40 L 78 120 L 52 120 L 52 40 L 20 40 Z" fill="#011F5B"/>
+            
+            <!-- Interlocking Dynamic 'M' Structure -->
+            <path d="M 52 62 L 78 100 L 104 62 L 104 120 L 128 120 L 128 42 L 100 42 L 78 78 L 56 42 L 52 42 Z" fill="#011F5B"/>
+            
+            <!-- Forward Acceleration / Progress Chevron Arrow -->
+            <path d="M 112 35 L 142 70 L 112 105 L 126 120 L 168 70 L 126 20 Z" fill="#FFBF00"/>
+        </g>
+    </g>
+</svg>
