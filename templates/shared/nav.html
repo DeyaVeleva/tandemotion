@@ -1,19 +1,23 @@
 {% with current_url=request.resolver_match.url_name %}
-<!-- REUSABLE TANDEMOTION NAVIGATION -->
 <nav class="main-navigation" aria-label="Main navigation">
 
     <a class="nav-link {% if current_url == 'home' %}active{% endif %}"
        href="{% url 'home' %}">Home</a>
 
-    <a class="nav-link {% if current_url == 'athletes-list' or current_url == 'athlete-details' or current_url == 'athlete-create' %}active{% endif %}"
+    <a class="nav-link {% if current_url == 'athletes-list' or current_url == 'athlete-details' or current_url == 'athlete-add' or current_url == 'athlete-edit' or current_url == 'athlete-delete' %}active{% endif %}"
        href="{% url 'athletes-list' %}">Athletes</a>
 
-    <a class="nav-link {% if current_url == 'coaches-list' or current_url == 'coach-details' or current_url == 'coach-create' %}active{% endif %}"
+    <a class="nav-link {% if current_url == 'coaches-list' or current_url == 'coach-details' or current_url == 'coach-add' or current_url == 'coach-edit' or current_url == 'coach-delete' %}active{% endif %}"
        href="{% url 'coaches-list' %}">Coaches</a>
 
-    <a class="nav-link" href="{% url 'training-list' %}">Trainings</a>
-    <a class="nav-link" href="{% url 'competition-list' %}">Competitions</a>
-    <a class="nav-link" href="">Reviews</a>
+    <a class="nav-link {% if current_url == 'training-list' or current_url == 'training-detail' or current_url == 'training-create' or current_url == 'training-edit' or current_url == 'training-delete' %}active{% endif %}"
+       href="{% url 'training-list' %}">Trainings</a>
+
+    <a class="nav-link {% if current_url == 'competition-list' or current_url == 'competition-detail' or current_url == 'competition-add' or current_url == 'competition-edit' or current_url == 'competition-delete' %}active{% endif %}"
+       href="{% url 'competition-list' %}">Competitions</a>
+
+    <a class="nav-link {% if current_url == 'message-list' or current_url == 'message-detail' or current_url == 'message-add' or current_url == 'message-edit' or current_url == 'message-delete' %}active{% endif %}"
+       href="{% url 'message-list' %}">Messages</a>
 
 </nav>
 {% endwith %}

@@ -3,7 +3,7 @@
 from django.urls import path, include
 
 from coaching.views import CompetitionListView, CompetitionDetailView, CompetitionCreateView, CompetitionUpdateView, \
-    CompetitionDeleteView
+    CompetitionDeleteView, MessageListView, MessageCreateView, MessageDetailView, MessageUpdateView, MessageDeleteView
 
 urlpatterns = [
     path('competitions/', include([
@@ -13,4 +13,12 @@ urlpatterns = [
         path('edit/<int:pk>/', CompetitionUpdateView.as_view(), name='competition-edit'),
         path('delete/<int:pk>/', CompetitionDeleteView.as_view(), name='competition-delete'),
     ])),
+    path('messages/', include([
+        path('', MessageListView.as_view(), name='message-list'),
+        path('<int:pk>/', MessageDetailView.as_view(), name='message-detail'),
+        path('add/', MessageCreateView.as_view(), name='message-add'),
+        path('edit/<int:pk>/', MessageUpdateView.as_view(), name='message-edit'),
+        path('delete/<int:pk>/', MessageDeleteView.as_view(), name='message-delete'),
+
+    ]))
 ]

@@ -1,14 +1,19 @@
 {% extends "shared/base.html" %}
 
 {% block title %}{{ profile.first_name }} {{ profile.last_name }} | TandeMotion{% endblock %}
-
 {% block content %}
 <section class="page-layout">
     <div class="content-container">
 
-        <a href="/" class="profile-back">
-            &larr; Back to Home
-        </a>
+        {% if is_coach %}
+            <a href="{% url 'coaches-list' %}" class="profile-back">
+                &larr; Back to Coaches
+            </a>
+        {% else %}
+            <a href="{% url 'athletes-list' %}" class="profile-back">
+                &larr; Back to Athletes
+            </a>
+        {% endif %}
 
         <div class="content-panel">
             <div class="profile-details-layout">
@@ -73,6 +78,21 @@
                                 <p>{{ profile.get_specialty_display }}</p>
                             </div>
                         {% endif %}
+                    
+                        
+                        {% if is_coach %}
+                            <div class="profile-field">
+                                <span>Athletes</span>
+                        
+                                {% for athlete in profile.athletes.all %}
+                                    <p>
+                                        {{ athlete.first_name }} {{ athlete.last_name }}
+                                    </p>
+                                {% empty %}
+                                    <p>No athletes assigned</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
 
                     <div class="content-actions">
@@ -94,7 +114,6 @@
 
             </div>
         </div>
-
     </div>
 </section>
 {% endblock %}

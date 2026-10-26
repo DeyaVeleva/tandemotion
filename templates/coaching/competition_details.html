@@ -26,26 +26,11 @@
 
             <div class="profile-fields">
 
-                {% if competition.start %}
+                {% if competition.date %}
                     <div class="profile-field">
-                        <span>Start</span>
+                        <span>Date</span>
                         <p>
-                            {{ competition.start|date:"F j, Y" }}
-                            {% if competition.start|time:"H:i" != "00:00" %}
-                                at {{ competition.start|time:"H:i" }}
-                            {% endif %}
-                        </p>
-                    </div>
-                {% endif %}
-
-                {% if competition.finish %}
-                    <div class="profile-field">
-                        <span>Finish</span>
-                        <p>
-                            {{ competition.finish|date:"F j, Y" }}
-                            {% if competition.finish|time:"H:i" != "00:00" %}
-                                at {{ competition.finish|time:"H:i" }}
-                            {% endif %}
+                            {{ competition.date|date:"F j, Y" }}
                         </p>
                     </div>
                 {% endif %}
@@ -74,11 +59,7 @@
                    class="button button-secondary">
                     Delete Competition
                 </a>
-
-                <a href="{% url 'competition-list' %}"
-                   class="button button-secondary">
-                    Back to Competitions
-                </a>
+                
             </div>
 
         </div>

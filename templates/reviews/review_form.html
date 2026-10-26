@@ -1,4 +1,3 @@
-```django
 {% extends "shared/base.html" %}
 
 {% block title %}{{ page_title }} | TandeMotion{% endblock %}
@@ -6,6 +5,10 @@
 {% block content %}
 <section class="page-layout">
     <div class="content-container">
+        
+        <a href="{% url 'reflection-list' training.pk %}" class="profile-back">
+            &larr; Back to Reviews
+        </a>
 
         <div class="content-panel form-card">
             <header class="form-header">
@@ -21,8 +24,6 @@
             <form method="post"
                   enctype="multipart/form-data"
                   class="profile-form">
-                {% csrf_token %}
-
                 {% include "shared/_form.html" %}
             </form>
         </div>
@@ -30,4 +31,3 @@
     </div>
 </section>
 {% endblock %}
-```

@@ -31,7 +31,7 @@
                     <article class="content-card">
                         <h2>{{ review }}</h2>
 
-                        <a href="{% url 'reflection-detail' review.pk %}"
+                        <a href="{% url 'reflection-detail' review.training.pk review.pk %}"
                            class="button button-primary">
                             View Reflection
                         </a>
@@ -42,11 +42,6 @@
             <div class="content-panel">
                 <h2>No reflections yet</h2>
                 <p>No reflections have been added for this training.</p>
-
-                <a href="{% url 'reflection-create' training.pk %}"
-                   class="button button-primary">
-                    Add the First Reflection
-                </a>
             </div>
         {% endif %}
 

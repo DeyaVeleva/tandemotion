@@ -6,6 +6,16 @@
 {% block content %}
 <section class="page-layout">
     <div class="content-container">
+        
+        {% if is_coach %}
+            <a href="{% url 'coaches-list' %}" class="profile-back">
+                &larr; Back to Coaches
+            </a>
+        {% else %}
+            <a href="{% url 'athletes-list' %}" class="profile-back">
+                &larr; Back to Athletes
+            </a>
+        {% endif %}
 
         <div class="content-panel form-card">
             <header class="form-header">
@@ -23,7 +33,6 @@
                 enctype="multipart/form-data"
                 class="profile-form"
             >
-                {% csrf_token %}
                 {% include "shared/_form.html" %}
             </form>
 

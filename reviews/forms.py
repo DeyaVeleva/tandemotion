@@ -1,6 +1,6 @@
 from django import forms
 
-from reviews.models import AthleteReflection, CoachFeedback
+from reviews.models import AthleteReflection
 
 
 class AthleteReflectionForm(forms.ModelForm):
@@ -45,31 +45,3 @@ class AthleteReflectionForm(forms.ModelForm):
 
         }
 
-class CoachFeedbackForm(forms.ModelForm):
-    class Meta:
-        model = CoachFeedback
-        exclude = ['created_at', 'updated_at', 'training', 'competition', 'to_athlete'] #click on the athletes reflection
-        widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'Title'}),
-            'feedback': forms.Textarea(attrs={'placeholder': 'Feedback'}),
-            'author': forms.Select(attrs={'placeholder': 'Coach'}),
-        }
-        labels = {
-            'title': 'Title',
-            'feedback': 'Feedback',
-            'author': 'Coach',
-        }
-        help_texts = {
-            'feedback': 'Type what your feedback is.',
-        }
-        error_messages = {
-            'title': {
-                'required': 'Please, enter a title.',
-            },
-            'feedback': {
-                'required': 'Please, enter a feedback.',
-            },
-            'author': {
-                'required': 'Please, select a coach.',
-            }
-        }

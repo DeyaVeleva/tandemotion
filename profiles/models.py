@@ -26,6 +26,7 @@ class CoachProfile(BaseProfile):
     specialty = models.CharField(max_length = 50, choices = SPECIALTY_CHOICES)
     athletes = models.ManyToManyField(
         'AthleteProfile',
+        related_name='coaches',
         blank = True,
     )
 

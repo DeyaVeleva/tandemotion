@@ -51,10 +51,6 @@ class AthleteReflection(BaseReview):
     reflection = models.TextField()
     author = models.ForeignKey(AthleteProfile, on_delete=models.CASCADE)
 
-class CoachFeedback(BaseReview):
-    feedback = models.TextField()
-    author = models.ForeignKey(CoachProfile, on_delete=models.CASCADE)
-    to_athlete= models.ForeignKey(AthleteProfile , on_delete=models.CASCADE)
 
 
 

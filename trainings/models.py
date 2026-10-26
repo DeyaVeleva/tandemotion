@@ -13,7 +13,7 @@ class Training(models.Model):
     description = models.TextField(
         blank = True,
     )
-    types =models.ManyToManyField('TrainingType')
+    types =models.CharField(max_length=100)
     coaches = models.ManyToManyField(
         CoachProfile,
     )
@@ -25,7 +25,3 @@ class Training(models.Model):
     class Meta:
         ordering = ['-start']
 
-class TrainingType(models.Model):
-    title = models.CharField(max_length=100, unique=True)
-    def __str__(self):
-        return self.title

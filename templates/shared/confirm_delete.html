@@ -1,38 +1,27 @@
-
 {% extends "shared/base.html" %}
-
 {% block title %}Confirm Delete | TandeMotion{% endblock %}
-
 {% block content %}
 <section class="delete-page">
     <div class="delete-card">
-
         <div class="delete-icon">!</div>
-
         <h1 class="delete-title">Confirm deletion</h1>
-
         <p class="delete-message">
             Are you sure you want to delete
             <strong>{{ object }}</strong>?
         </p>
-
         <p class="delete-warning">
             This action cannot be undone.
         </p>
-
         <form method="post" class="delete-actions">
             {% csrf_token %}
-
             <button type="submit" class="delete-button">
                 Yes, delete
             </button>
-
             <a href="{% url cancel_url_name object.pk %}"
                class="delete-cancel-button">
                 Cancel
             </a>
         </form>
-
     </div>
 </section>
 {% endblock %}

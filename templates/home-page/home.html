@@ -1,11 +1,9 @@
-
 {% extends "shared/base.html" %}
-
+{% load static %}
 {% block title %}Home | TandeMotion{% endblock %}
 
 {% block content %}
 
-<!-- HERO SECTION -->
 <section class="home-hero">
     <div class="hero-content">
         <span class="hero-label">YOUR SPORT. YOUR COMMUNITY.</span>
@@ -21,35 +19,20 @@
         </p>
 
         <div class="hero-actions">
-            <!-- Add the training page destination inside href="" -->
-            <a class="button button-primary" href="">
+            <a class="button button-primary" href="{% url 'training-list' %}">
                 Explore Trainings
             </a>
-
-            <!-- Add the coaches page destination inside href="" -->
-            <a class="button button-secondary" href="">
+            <a class="button button-secondary" href="{% url 'coaches-list' %}">
                 Meet the Coaches
             </a>
         </div>
     </div>
 
     <div class="hero-visual">
-        <!-- Add your hero image path inside src="" later -->
-        <img
-            class="hero-image"
-            src=""
-            alt="Athletes training together"
-        >
-
-        <div class="hero-image-caption">
-            <span class="caption-accent"></span>
-            <span>Built through teamwork.</span>
-        </div>
+        <img class="hero-image" src="{% static 'img.png' %}" alt="Train with purpose. Grow with every session.">
     </div>
 </section>
 
-
-<!-- INTRODUCTION SECTION -->
 <section class="home-intro">
     <div class="section-heading">
         <span class="section-label">WHY TANDEMOTION?</span>
@@ -62,55 +45,6 @@
     </div>
 </section>
 
-
-<!-- FEATURES SECTION -->
-<section class="features-section">
-    <div class="feature-grid">
-
-        <article class="feature-card">
-            <div class="feature-number">01</div>
-            <h3>Find Trainings</h3>
-            <p>
-                Discover training opportunities and find activities
-                that match your sporting interests.
-            </p>
-            <!-- Add the training page destination inside href="" -->
-            <a class="feature-link" href="">
-                Explore trainings <span aria-hidden="true">→</span>
-            </a>
-        </article>
-
-        <article class="feature-card feature-card-highlight">
-            <div class="feature-number">02</div>
-            <h3>Meet Coaches</h3>
-            <p>
-                Learn about coaches, their specialties, and the
-                experience they bring to the sporting community.
-            </p>
-            <!-- Add the coaches page destination inside href="" -->
-            <a class="feature-link" href="">
-                Discover coaches <span aria-hidden="true">→</span>
-            </a>
-        </article>
-
-        <article class="feature-card">
-            <div class="feature-number">03</div>
-            <h3>Join the Community</h3>
-            <p>
-                Explore athlete profiles, share feedback, and
-                celebrate progress across different sports.
-            </p>
-            <!-- Add the athletes page destination inside href="" -->
-            <a class="feature-link" href="">
-                Meet athletes <span aria-hidden="true">→</span>
-            </a>
-        </article>
-
-    </div>
-</section>
-
-
-<!-- COMPETITIONS SECTION -->
 <section class="competition-section">
     <div class="competition-content">
         <span class="section-label">SET YOUR NEXT GOAL</span>
@@ -120,8 +54,7 @@
             and keep moving towards your next achievement.
         </p>
 
-        <!-- Add the competitions page destination inside href="" -->
-        <a class="button button-primary" href="">
+        <a class="button button-primary" href="{% url 'competition-list' %}">
             Explore Competitions
         </a>
     </div>
@@ -133,18 +66,12 @@
 </section>
 
 
-<!-- FINAL CALL TO ACTION -->
 <section class="home-cta">
     <span class="section-label">YOUR JOURNEY STARTS HERE</span>
     <h2>Better training. Stronger community.</h2>
     <p>
         Make every session count and keep building your potential.
     </p>
-
-    <!-- Add the training page destination inside href="" -->
-    <a class="button button-dark" href="">
-        Get Started
-    </a>
 </section>
 
 {% endblock %}

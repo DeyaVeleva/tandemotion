@@ -1,10 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "shared/base.html" %}
+
+{% block title %}{{ page_title|default:"New Message" }} | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="page-layout">
+    <div class="content-container">
+        
+        <a href="{% url 'message-list' %}" class="profile-back">
+            &larr; Back to Messages
+        </a>
+
+        <div class="content-panel form-card">
+            <header class="form-header">
+                <p class="profile-label">TandeMotion / Messages / Form</p>
+
+                <h1 class="page-title">
+                    {{ page_title|default:"New Message" }}
+                </h1>
+
+                <p class="page-description">
+                    Send a message to an athlete or coach.
+                </p>
+            </header>
+
+            <form method="post" class="profile-form">
+                {% include "shared/_form.html" %}
+            </form>
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

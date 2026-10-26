@@ -42,28 +42,39 @@ class AthleteReflectionCreateView(CreateView):
         form= super().get_form(form_class)
         form.instance.training = self.training
         return form
-
     def form_valid(self, form):
         form.instance.training = self.training
         return super().form_valid(form)
     def get_success_url(self):
         return reverse('reflection-list', kwargs={'training_pk': self.training.pk})
+    def get_context_data(self, **kwargs):
+        context =super().get_context_data(**kwargs)
+        context['training'] = self.training
+        context['page_title'] = 'Add Reflection'
+        return context
 
 class AthleteReflectionUpdateView(UpdateView):
     model = AthleteReflection
     form_class = AthleteReflectionForm
     template_name = 'reviews/review_form.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['training'] = self.object.training
+        context['review'] = self.object
+        context['page_title'] = 'Edit Reflection'
+        return context
 
     def get_success_url(self):
-        return reverse_lazy('reflection-detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('reflection-detail',  kwargs={'training_pk': self.object.training.pk, 'pk': self.object.pk})
 
 class AthleteReflectionDeleteView(DeleteView):
     model = AthleteReflection
-    template_name = 'shared/confirm_delete.html'
+    template_name = 'reviews/review_confirm_delete.html'
     def get_success_url(self):
         return reverse('reflection-list', kwargs={'training_pk': self.object.training.pk})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['cancel_url_name'] = 'reflection-detail'
+        context['cancel_url_kwargs'] = {'training_pk': self.object.training.pk, 'pk': self.object.pk}
         return context

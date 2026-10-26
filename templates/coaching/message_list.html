@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "shared/base.html" %}
+
+{% block title %}{{ page_title|default:"Messages" }} | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="page-layout">
+    <div class="content-container">
+
+        <header class="page-header">
+            <p class="profile-label">TandeMotion / Messages</p>
+            <h1 class="page-title">
+                {{ page_title|default:"Messages" }}
+            </h1>
+            <p class="page-description">
+                Stay connected with your athletes and coaches.
+            </p>
+        </header>
+
+        <div class="list-actions">
+            <a href="{% url 'message-add' %}"
+               class="button button-primary">
+                + New Message
+            </a>
+        </div>
+
+        {% if messages %}
+            <div class="card-grid">
+                {% for message in messages %}
+                    <article class="content-card">
+                        <h2>{{ message }}</h2>
+
+                        {% if message.coach %}
+                            <p>
+                                <strong>From:</strong>
+                                {{ message.coach }}
+                            </p>
+                        {% endif %}
+
+                        {% if message.athletes.exists %}
+                            <p>
+                                <strong>To:</strong>
+                                {% for athlete in message.athletes.all %}
+                                    {{ athlete }}{% if not forloop.last %}, {% endif %}
+                                {% empty %}
+                                    No recipient assigned
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+
+                        {% if message.created_at %}
+                            <p>
+                                <strong>Date:</strong>
+                                {{ message.created_at|date:"M d, Y H:i" }}
+                            </p>
+                        {% endif %}
+
+                        <a href="{% url 'message-detail' message.pk %}"
+                           class="button button-primary">
+                            View Message
+                        </a>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="content-panel">
+                <h2>No messages yet</h2>
+                <p>There are no messages to display right now.</p>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+{% endblock %}

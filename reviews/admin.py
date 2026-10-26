@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from reviews.models import AthleteReflection, CoachFeedback
+from reviews.models import AthleteReflection
 
 admin.site.register(AthleteReflection)
-admin.site.register(CoachFeedback)

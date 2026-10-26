@@ -1,6 +1,6 @@
 {% extends "shared/base.html" %}
 
-{% block title %}Review Details | TandeMotion{% endblock %}
+{% block title %}{{ review.title|default:"Review Details" }} | TandeMotion{% endblock %}
 
 {% block content %}
 <section class="page-layout">
@@ -11,34 +11,36 @@
         </a>
 
         <div class="content-panel">
-
             <header class="page-header">
-                <p class="profile-label">TandeMotion / Review Details</p>
-                <h1 class="page-title">Review Details</h1>
+                <p class="profile-label">TandeMotion / Reflection Details</p>
+
+                <h1 class="page-title">
+                    {{ review.title|default:"Review Details" }}
+                </h1>
+
+                {% if review.author %}
+                    <p class="page-description">
+                        By {{ review.author.first_name }} {{ review.author.last_name }}
+                    </p>
+                {% endif %}
             </header>
 
             <div class="profile-fields">
 
-                {% if review.title %}
-                    <div class="profile-field">
-                        <span>Title</span>
-                        <p>{{ review.title }}</p>
-                    </div>
-                {% endif %}
+                <div class="profile-field">
+                    <span>Training</span>
+                    <p>{{ review.training.title }}</p>
+                </div>
 
-                {% if review.rating %}
-                    <div class="profile-field">
-                        <span>Rating</span>
-                        <p>{{ review.rating }}</p>
-                    </div>
-                {% endif %}
+                <div class="profile-field">
+                    <span>Rating</span>
+                    <p>{{ review.rating|default:"Not rated" }}</p>
+                </div>
 
-                {% if review.description %}
-                    <div class="profile-field">
-                        <span>Review</span>
-                        <p>{{ review.description|linebreaksbr }}</p>
-                    </div>
-                {% endif %}
+                <div class="profile-field">
+                    <span>Main Goals</span>
+                    <p>{{ review.main_goals|default:"No main goals provided."|linebreaksbr }}</p>
+                </div>
 
                 {% if review.created_at %}
                     <div class="profile-field">
@@ -46,27 +48,27 @@
                         <p>{{ review.created_at|date:"F j, Y" }}</p>
                     </div>
                 {% endif %}
-
+            
+                <div class="profile-field">
+                    <span>Reflection</span>
+                    <p>{{ review.reflection|default:"No reflection provided."|linebreaksbr }}</p>
+                </div>
             </div>
 
             <div class="content-actions">
-                <a href="{% url 'reflection-edit' review.pk %}"
+                <a href="{% url 'reflection-edit' review.training.pk review.pk %}"
                    class="button button-primary">
                     Edit Review
                 </a>
 
-                <a href="{% url 'reflection-delete' review.pk %}"
+                <a href="{% url 'reflection-delete' review.training.pk review.pk %}"
                    class="button button-secondary">
                     Delete Review
                 </a>
-
-                <a href="{% url 'reflection-list' review.training.pk %}"
-                   class="button button-secondary">
-                    Back to Reviews
-                </a>
+                
             </div>
-
         </div>
+
     </div>
 </section>
 {% endblock %}

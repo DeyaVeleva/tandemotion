@@ -1,10 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "shared/base.html" %}
+
+{% block title %}Message Details | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="page-layout">
+    <div class="content-container">
+
+        <a href="{% url 'message-list' %}" class="profile-back">
+            &larr; Back to Messages
+        </a>
+
+        <div class="content-panel">
+            <header class="page-header">
+                <p class="profile-label">TandeMotion / Message Details</p>
+
+                <h1 class="page-title">{{ message.title }}</h1>
+
+                {% if message.created_at %}
+                    <p class="page-description">
+                        Sent on {{ message.created_at|date:"F j, Y" }}
+                        at {{ message.created_at|time:"H:i" }}
+                    </p>
+                {% endif %}
+            </header>
+
+            <div class="profile-fields">
+                <div class="profile-field">
+                    <span>From</span>
+                    <p>{{ message.coach|default:"Not specified" }}</p>
+                </div>
+
+                <div class="profile-field">
+                    <span>To</span>
+                    <p>
+                        {% for athlete in message.athletes.all %}
+                            {{ athlete }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                            No recipient assigned
+                        {% endfor %}
+                    </p>
+                </div>
+
+                <div class="profile-field">
+                    <span>Date</span>
+                    <p>
+                        {% if message.created_at %}
+                            {{ message.created_at|date:"F j, Y" }}
+                            at {{ message.created_at|time:"H:i" }}
+                        {% else %}
+                            Not specified
+                        {% endif %}
+                    </p>
+                </div>
+
+                <div class="profile-field">
+                    <span>Message</span>
+                    <p>{{ message.message|default:"No message content available."|linebreaksbr }}</p>
+                </div>
+            </div>
+        
+            <div class="content-actions">
+                <a href="{% url 'message-edit' message.pk %}"
+                   class="button button-primary">
+                    Edit Message
+                </a>
+            
+                <a href="{% url 'message-delete' message.pk %}"
+                   class="button button-secondary">
+                    Delete Message
+                </a>
+            
+                <a href="{% url 'message-list' %}"
+                   class="button button-secondary">
+                    Back to Messages
+                </a>
+            </div>
+        
+        </div>
+
+    </div>
+</section>
+{% endblock %}

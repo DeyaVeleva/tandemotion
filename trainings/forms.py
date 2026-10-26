@@ -2,7 +2,7 @@ from django.utils import timezone
 
 from django import forms
 
-from trainings.models import Training, TrainingType
+from trainings.models import Training
 
 
 class TrainingForm(forms.ModelForm):
@@ -15,9 +15,9 @@ class TrainingForm(forms.ModelForm):
             'finish': forms.TimeInput(attrs={'type': 'time'}),
             'location': forms.TextInput(attrs={'placeholder': 'Location'}),
             'description': forms.Textarea(attrs={'placeholder': 'Description'}),
-            'types': forms.SelectMultiple(attrs={'class': 'form-control'}),
-            'coaches': forms.SelectMultiple(attrs={'class': 'form-control'}),
-            'athletes': forms.SelectMultiple(attrs={'class': 'form-control'}),
+            'types': forms.TextInput(attrs={'placeholder': 'Type of Training'}),
+            'coaches': forms.CheckboxSelectMultiple(attrs={'class': 'form-control'}),
+            'athletes': forms.CheckboxSelectMultiple(attrs={'class': 'form-control'}),
         }
         labels = {
             'title': 'Title',
@@ -42,8 +42,8 @@ class TrainingForm(forms.ModelForm):
             'finish': {
                 'required': 'Please, enter a finish time.',
             },
-            'type': {
-                'required': 'Please, select a type of training.',
+            'types': {
+                'required': 'Please, enter a type of training.',
             },
             'coaches': {
                 'required': 'Please, select coaches.',
@@ -70,22 +70,3 @@ class TrainingForm(forms.ModelForm):
     def __str__(self):
         return f"{self.title} - {self.start} : {self.finish}"
 
-class TrainingTypeForm(forms.ModelForm):
-    class Meta:
-        model = TrainingType
-        fields = '__all__'
-        widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'Training Type'}),
-        }
-        labels = {
-            'title': 'Type of Training',
-        }
-        help_texts = {
-            'title': 'Enter a training type.',
-        }
-        error_messages = {
-            'title': {
-                'required': 'Please, enter a training type.',
-                'unique': 'This training type already exists.',
-            }
-        }

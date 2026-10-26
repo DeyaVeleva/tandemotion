@@ -1,11 +1,8 @@
-
+{% load static %}
 <header class="site-header">
     <div class="header-container">
-
-        <!-- Add your logo image path inside src="" later -->
-        <a class="brand" href="">
-            <img class="brand-logo" src="" alt="TandeMotion logo">
-
+        <a class="brand" href="{% url 'home' %}">
+            <img class="brand-logo" src="{% static 'TandeMotion-Logo-square-offwhite.svg' %}" alt="TandeMotion logo">
             <div class="brand-text">
                 <span class="brand-name">TandeMotion</span>
                 <span class="brand-tagline">
@@ -14,7 +11,6 @@
             </div>
         </a>
 
-        <!-- Decorative gold accent -->
         <div class="header-accent" aria-hidden="true">
             <span class="accent-line"></span>
             <span class="accent-dot"></span>

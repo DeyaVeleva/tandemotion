@@ -75,7 +75,7 @@ class CoachProfileForm(forms.ModelForm):
             'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
             'sport': forms.TextInput(attrs={'placeholder': "Primary sport"}),
             'specialty': forms.Select(attrs={'placeholder': "Specialty"}),
-            'athletes': forms.SelectMultiple(attrs={'placeholder': "Athletes"}),
+            'athletes': forms.CheckboxSelectMultiple(attrs={'placeholder': "Athletes"}),
         }
         labels = {
             'first_name': 'First Name',
@@ -117,8 +117,13 @@ class CoachProfileForm(forms.ModelForm):
 
     def clean_date_of_birth(self):
         date_of_birth = self.cleaned_data.get('date_of_birth')
-        if date_of_birth and date_of_birth >= timezone.localdate():
-            raise forms.ValidationError('Date of birth must be in the past!')
+        if date_of_birth:
+            today = timezone.now()
+            age = today.year - date_of_birth.year
+            if (today.month, today.day) < (date_of_birth.month, date_of_birth.day):
+                age-=1
+            if age<18:
+                raise forms.ValidationError('Coaches must be at least 18 years old!')
         return date_of_birth
 
     def clean(self):

@@ -17,17 +17,18 @@ class AthleteProfileDetailView(DetailView):
     model = AthleteProfile
     template_name = 'profiles/profile_details.html'
     context_object_name = 'profile'
-    def get_context_data(self, *, object_list=..., **kwargs):
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['edit_url_name'] = 'athlete-edit'
         context['delete_url_name'] = 'athlete-delete'
+        context['is_coach'] = False
         return context
 
 class AthleteProfileListView(ListView):
     model = AthleteProfile
     template_name = 'profiles/profile_list.html'
     context_object_name = 'profiles'
-    def get_context_data(self, *, object_list = ..., **kwargs):
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Our Athletes'
         context['page_description'] = 'Meet our athletes.'
@@ -42,6 +43,11 @@ class AthleteProfileCreateView(CreateView):
     form_class = AthleteProfileForm
     template_name = 'profiles/profile_form.html'
     success_url = reverse_lazy('athletes-list')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_coach'] = False
+        return context
+
 
 class AthleteProfileUpdateView(UpdateView):
     model = AthleteProfile
@@ -49,6 +55,10 @@ class AthleteProfileUpdateView(UpdateView):
     template_name = 'profiles/profile_form.html'
     def get_success_url(self):
         return reverse_lazy('athlete-details', kwargs={'pk': self.object.pk})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_coach'] = False
+        return context
 
 class AthleteProfileDeleteView(DeleteView):
     model = AthleteProfile
@@ -57,6 +67,7 @@ class AthleteProfileDeleteView(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['cancel_url_name'] = 'athlete-details'
+        context['is_coach'] = False
         return context
 
 
@@ -79,10 +90,11 @@ class CoachProfileDetailView(DetailView):
     template_name = 'profiles/profile_details.html'
     context_object_name = 'profile'
 
-    def get_context_data(self, *, object_list=..., **kwargs):
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['edit_url_name'] = 'coach-edit'
         context['delete_url_name'] = 'coach-delete'
+        context['is_coach'] = True
         return context
 
 class CoachProfileCreateView(CreateView):
@@ -90,13 +102,21 @@ class CoachProfileCreateView(CreateView):
     form_class = CoachProfileForm
     template_name = 'profiles/profile_form.html'
     success_url = reverse_lazy('coaches-list')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_coach'] = True
+        return context
 
 class CoachProfileUpdateView(UpdateView):
     model = CoachProfile
     form_class = CoachProfileForm
     template_name = 'profiles/profile_form.html'
     def get_success_url(self):
-        return reverse_lazy('coaches-details', kwargs={'pk': self.object.pk})
+        return reverse_lazy('coach-details', kwargs={'pk': self.object.pk})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_coach'] = True
+        return context
 
 class CoachProfileDeleteView(DeleteView):
     model = CoachProfile
@@ -105,4 +125,5 @@ class CoachProfileDeleteView(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['cancel_url_name'] = 'coach-details'
+        context['is_coach'] = True
         return context
