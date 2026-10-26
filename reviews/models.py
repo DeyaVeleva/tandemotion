@@ -11,6 +11,7 @@ class BaseReview(models.Model):
     training = models.ForeignKey(
         Training,
         on_delete=models.CASCADE,
+        related_name='reflections',
         blank=True,
         null=True,
     )

@@ -48,7 +48,7 @@ class AthleteProfileUpdateView(UpdateView):
     form_class = AthleteProfileForm
     template_name = 'profiles/profile_form.html'
     def get_success_url(self):
-        return reverse_lazy('athletes-details', kwargs={'pk': self.object.pk})
+        return reverse_lazy('athlete-details', kwargs={'pk': self.object.pk})
 
 class AthleteProfileDeleteView(DeleteView):
     model = AthleteProfile

@@ -906,3 +906,42 @@
         padding: 13px 12px;
     }
 }
+
+/* Compact buttons on profile and community pages */
+.content-actions .button,
+.content-card .button,
+.list-actions .button {
+    min-height: auto;
+    padding: 10px 18px;
+    border-width: 1px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+/* Reduce spacing on community listing pages */
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-header .page-title {
+    margin-bottom: 8px;
+}
+
+.page-header .page-description {
+    margin-bottom: 0;
+}
+
+.list-actions {
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+/* Keep the cards closer to the heading */
+.card-grid {
+    margin-top: 0;
+    gap: 24px;
+}
+.list-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 24px;
+}

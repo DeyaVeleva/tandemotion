@@ -1,0 +1,72 @@
+{% extends "shared/base.html" %}
+
+{% block title %}Review Details | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="page-layout">
+    <div class="content-container">
+
+        <a href="{% url 'reflection-list' review.training.pk %}" class="profile-back">
+            &larr; Back to Reviews
+        </a>
+
+        <div class="content-panel">
+
+            <header class="page-header">
+                <p class="profile-label">TandeMotion / Review Details</p>
+                <h1 class="page-title">Review Details</h1>
+            </header>
+
+            <div class="profile-fields">
+
+                {% if review.title %}
+                    <div class="profile-field">
+                        <span>Title</span>
+                        <p>{{ review.title }}</p>
+                    </div>
+                {% endif %}
+
+                {% if review.rating %}
+                    <div class="profile-field">
+                        <span>Rating</span>
+                        <p>{{ review.rating }}</p>
+                    </div>
+                {% endif %}
+
+                {% if review.description %}
+                    <div class="profile-field">
+                        <span>Review</span>
+                        <p>{{ review.description|linebreaksbr }}</p>
+                    </div>
+                {% endif %}
+
+                {% if review.created_at %}
+                    <div class="profile-field">
+                        <span>Date Created</span>
+                        <p>{{ review.created_at|date:"F j, Y" }}</p>
+                    </div>
+                {% endif %}
+
+            </div>
+
+            <div class="content-actions">
+                <a href="{% url 'reflection-edit' review.pk %}"
+                   class="button button-primary">
+                    Edit Review
+                </a>
+
+                <a href="{% url 'reflection-delete' review.pk %}"
+                   class="button button-secondary">
+                    Delete Review
+                </a>
+
+                <a href="{% url 'reflection-list' review.training.pk %}"
+                   class="button button-secondary">
+                    Back to Reviews
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

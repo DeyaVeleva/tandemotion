@@ -11,8 +11,8 @@
     <a class="nav-link {% if current_url == 'coaches-list' or current_url == 'coach-details' or current_url == 'coach-create' %}active{% endif %}"
        href="{% url 'coaches-list' %}">Coaches</a>
 
-    <a class="nav-link" href="">Trainings</a>
-    <a class="nav-link" href="">Competitions</a>
+    <a class="nav-link" href="{% url 'training-list' %}">Trainings</a>
+    <a class="nav-link" href="{% url 'competition-list' %}">Competitions</a>
     <a class="nav-link" href="">Reviews</a>
 
 </nav>

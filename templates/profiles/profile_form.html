@@ -1,19 +1,34 @@
+
 {% extends "shared/base.html" %}
 
 {% block title %}{{ page_title }} | TandeMotion{% endblock %}
 
 {% block content %}
-<section class="form-container">
-    <div class="form-card">
-        <h1 class="form-title">{{ page_title }}</h1>
+<section class="page-layout">
+    <div class="content-container">
 
-        <p class="form-description">
-            Enter the information below.
-        </p>
+        <div class="content-panel form-card">
+            <header class="form-header">
+                <p class="profile-label">TandeMotion / Forms</p>
 
-        <form method="post" enctype="multipart/form-data">
-            {% include "shared/_form.html" %}
-        </form>
+                <h1 class="page-title">{{ page_title }}</h1>
+
+                <p class="page-description">
+                    Enter the information below.
+                </p>
+            </header>
+
+            <form
+                method="post"
+                enctype="multipart/form-data"
+                class="profile-form"
+            >
+                {% csrf_token %}
+                {% include "shared/_form.html" %}
+            </form>
+
+        </div>
+
     </div>
 </section>
 {% endblock %}

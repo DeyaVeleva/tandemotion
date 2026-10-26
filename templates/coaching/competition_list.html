@@ -1,0 +1,71 @@
+```django
+{% extends "shared/base.html" %}
+
+{% block title %}{{ page_title|default:"Competitions" }} | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="page-layout">
+    <div class="content-container">
+
+        <header class="page-header">
+            <p class="profile-label">TandeMotion / Competitions</p>
+            <h1 class="page-title">
+                {{ page_title|default:"Competitions" }}
+            </h1>
+            <p class="page-description">
+                Explore upcoming and past competitions.
+            </p>
+        </header>
+
+        <div class="list-actions">
+            <a href="{% url 'competition-add' %}"
+               class="button button-primary">
+                + Add Competition
+            </a>
+        </div>
+
+        {% if competitions %}
+            <div class="card-grid">
+                {% for competition in competitions %}
+                    <article class="content-card">
+                        <h2>{{ competition.name }}</h2>
+                    
+                        {% if competition.sport and competition.category %}
+                            <p>
+                                <strong>Sport:</strong>
+                                {{ competition.sport }} - {{ competition.category }}
+                            </p>
+                        {% endif %}
+
+                        {% if competition.date %}
+                            <p>
+                                <strong>Date:</strong>
+                                {{ competition.date|date:"M d, Y" }}
+                            </p>
+                        {% endif %}
+
+                        {% if competition.location %}
+                            <p>
+                                <strong>Location:</strong>
+                                {{ competition.location }}
+                            </p>
+                        {% endif %}
+
+                        <a href="{% url 'competition-detail' competition.pk %}"
+                           class="button button-primary">
+                            View Details
+                        </a>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="content-panel">
+                <h2>No competitions yet</h2>
+                <p>There are no competitions to display right now.</p>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+{% endblock %}
+```

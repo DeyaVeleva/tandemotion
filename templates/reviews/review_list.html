@@ -1,0 +1,55 @@
+
+{% extends "shared/base.html" %}
+
+{% block title %}{{ page_title }} | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="page-layout">
+    <div class="content-container">
+
+        <a href="{% url 'training-detail' training.pk %}"
+           class="profile-back">
+            &larr; Back to Training
+        </a>
+
+        <header class="page-header">
+            <p class="profile-label">TandeMotion / Reflections</p>
+            <h1 class="page-title">{{ page_title }}</h1>
+            <p class="page-description">{{ page_description }}</p>
+        </header>
+
+        <div class="list-actions">
+            <a href="{% url 'reflection-create' training.pk %}"
+               class="button button-primary">
+                + Add a Reflection
+            </a>
+        </div>
+
+        {% if reviews %}
+            <div class="card-grid">
+                {% for review in reviews %}
+                    <article class="content-card">
+                        <h2>{{ review }}</h2>
+
+                        <a href="{% url 'reflection-detail' review.pk %}"
+                           class="button button-primary">
+                            View Reflection
+                        </a>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="content-panel">
+                <h2>No reflections yet</h2>
+                <p>No reflections have been added for this training.</p>
+
+                <a href="{% url 'reflection-create' training.pk %}"
+                   class="button button-primary">
+                    Add the First Reflection
+                </a>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+{% endblock %}

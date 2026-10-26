@@ -3,14 +3,14 @@
 {% block title %}{{ profile.first_name }} {{ profile.last_name }} | TandeMotion{% endblock %}
 
 {% block content %}
-<section class="profile-page">
-    <div class="profile-container">
+<section class="page-layout">
+    <div class="content-container">
 
         <a href="/" class="profile-back">
             &larr; Back to Home
         </a>
 
-        <div class="profile-card">
+        <div class="content-panel">
             <div class="profile-details-layout">
 
                 {% if profile.profile_pic %}
@@ -28,21 +28,29 @@
                 <div class="profile-info">
                     <p class="profile-label">TandeMotion / Profile</p>
 
-                    <h1 class="profile-title">
+                    <h1 class="page-title">
                         {{ profile.first_name }} {{ profile.last_name }}
                     </h1>
 
-                    <p class="profile-subtitle">{{ profile.sport }}</p>
+                    {% if profile.sport %}
+                        <p class="page-description">{{ profile.sport }}</p>
+                    {% endif %}
 
                     <div class="profile-fields">
                         <div class="profile-field">
                             <span>Email</span>
-                            <p>{{ profile.email }}</p>
+                            <p>{{ profile.email|default:"Not provided" }}</p>
                         </div>
 
                         <div class="profile-field">
                             <span>Date of birth</span>
-                            <p>{{ profile.date_of_birth|date:"F j, Y" }}</p>
+                            <p>
+                                {% if profile.date_of_birth %}
+                                    {{ profile.date_of_birth|date:"F j, Y" }}
+                                {% else %}
+                                    Not provided
+                                {% endif %}
+                            </p>
                         </div>
 
                         {% if profile.main_competition_category %}
@@ -67,15 +75,26 @@
                         {% endif %}
                     </div>
 
-                    <div class="profile-actions">
-                        <a href="{% url edit_url_name profile.pk %}" class="profile-button">Edit Profile</a>
-                        <a href="{% url delete_url_name profile.pk %}" class="profile-button profile-button--secondary">
+                    <div class="content-actions">
+                        <a
+                            href="{% url edit_url_name profile.pk %}"
+                            class="button button-primary"
+                        >
+                            Edit Profile
+                        </a>
+
+                        <a
+                            href="{% url delete_url_name profile.pk %}"
+                            class="button button-secondary"
+                        >
                             Delete Profile
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
+
     </div>
 </section>
 {% endblock %}

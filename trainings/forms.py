@@ -59,14 +59,8 @@ class TrainingForm(forms.ModelForm):
             raise forms.ValidationError('Start time must be in the future!')
         return start
 
-    def clean_finish(self):
-        finish = self.cleaned_data.get('finish')
-        if finish and finish<timezone.now():
-            raise forms.ValidationError('Finish time must be in the future!')
-        return finish
-
     def clean(self):
-        cleaned_data = super(TrainingForm, self).clean()
+        cleaned_data = super().clean()
         start = self.cleaned_data.get('start')
         finish = self.cleaned_data.get('finish')
         if start and finish and start.time() >= finish:

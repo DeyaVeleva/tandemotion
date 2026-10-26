@@ -1,0 +1,87 @@
+{% extends "shared/base.html" %}
+
+{% block title %}{{ competition.title }} | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="page-layout">
+    <div class="content-container">
+
+        <a href="{% url 'competition-list' %}" class="profile-back">
+            &larr; Back to Competitions
+        </a>
+
+        <div class="content-panel">
+
+            <header class="page-header">
+                <p class="profile-label">TandeMotion / Competition Details</p>
+
+                <h1 class="page-title">{{ competition.name }}</h1>
+
+                {% if competition.sport and competition.category %}
+                    <p class="page-description">
+                        {{ competition.sport }} - {{ competition.category }}
+                    </p>
+                {% endif %}
+            </header>
+
+            <div class="profile-fields">
+
+                {% if competition.start %}
+                    <div class="profile-field">
+                        <span>Start</span>
+                        <p>
+                            {{ competition.start|date:"F j, Y" }}
+                            {% if competition.start|time:"H:i" != "00:00" %}
+                                at {{ competition.start|time:"H:i" }}
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endif %}
+
+                {% if competition.finish %}
+                    <div class="profile-field">
+                        <span>Finish</span>
+                        <p>
+                            {{ competition.finish|date:"F j, Y" }}
+                            {% if competition.finish|time:"H:i" != "00:00" %}
+                                at {{ competition.finish|time:"H:i" }}
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endif %}
+
+                <div class="profile-field">
+                    <span>Location</span>
+                    <p>{{ competition.location|default:"Not specified" }}</p>
+                </div>
+
+                {% if competition.description %}
+                    <div class="profile-field">
+                        <span>Description</span>
+                        <p>{{ competition.description|linebreaksbr }}</p>
+                    </div>
+                {% endif %}
+
+            </div>
+
+            <div class="content-actions">
+                <a href="{% url 'competition-edit' competition.pk %}"
+                   class="button button-primary">
+                    Edit Competition
+                </a>
+
+                <a href="{% url 'competition-delete' competition.pk %}"
+                   class="button button-secondary">
+                    Delete Competition
+                </a>
+
+                <a href="{% url 'competition-list' %}"
+                   class="button button-secondary">
+                    Back to Competitions
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

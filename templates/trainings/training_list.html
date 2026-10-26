@@ -1,0 +1,63 @@
+
+{% extends "shared/base.html" %}
+
+{% block title %}{{ page_title }} | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="page-layout">
+    <div class="content-container">
+
+        <header class="page-header">
+            <p class="profile-label">TandeMotion / Community</p>
+
+            <h1 class="page-title">{{ page_title }}</h1>
+
+            <p class="page-description">{{ page_description }}</p>
+        </header>
+
+        <div class="list-actions">
+            <a
+                href="{% url 'training-create' %}"
+                class="button button-primary"
+            >
+                + Add Training
+            </a>
+        </div>
+
+        {% if trainings %}
+            <div class="card-grid">
+                {% for training in trainings %}
+                    <article class="content-card">
+                        <h2>{{ training.title }}</h2>
+                    
+                        <p>
+                            <strong>Start:</strong>
+                            {{ training.start|date:"M d, Y" }} at {{ training.start|time:"H:i" }}
+                        </p>
+                    
+                        <p>
+                            <strong>Finish:</strong>
+                            {{ training.start|date:"M d, Y" }} at {{ training.finish|time:"H:i" }}
+                        </p>
+                    
+                        <p>
+                            <strong>Location:</strong>
+                            {{ training.location|default:"Not specified" }}
+                        </p>
+                    
+                        <a href="{% url 'training-detail' training.pk %}"
+                           class="button button-primary">
+                            View Details
+                        </a>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="content-panel">
+                <p>No trainings are available yet.</p>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+{% endblock %}

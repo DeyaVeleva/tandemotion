@@ -4,23 +4,30 @@
 {% block title %}{{ page_title }} | TandeMotion{% endblock %}
 
 {% block content %}
-<section class="profile-page">
-    <div class="profile-container">
+<section class="page-layout">
+    <div class="content-container">
 
-        <p class="profile-label">TandeMotion / Community</p>
-        <h1 class="profile-title">{{ page_title }}</h1>
-        <p class="profile-subtitle">{{ page_description }}</p>
-        
-        <div class="profile-list-actions">
-            <a href="{% url create_url_name %}" class="profile-button">
+        <header class="page-header">
+            <p class="profile-label">TandeMotion / Community</p>
+
+            <h1 class="page-title">{{ page_title }}</h1>
+
+            <p class="page-description">{{ page_description }}</p>
+        </header>
+
+        <div class="list-actions">
+            <a
+                href="{% url create_url_name %}"
+                class="button button-primary"
+            >
                 + {{ create_button_label }}
             </a>
         </div>
-    
+
         {% if profiles %}
-            <div class="profile-list">
+            <div class="card-grid">
                 {% for profile in profiles %}
-                    <article class="profile-list-item">
+                    <article class="content-card">
 
                         {% if profile.profile_pic %}
                             <img
@@ -38,7 +45,9 @@
                             {{ profile.first_name }} {{ profile.last_name }}
                         </h2>
 
-                        <p>{{ profile.sport }}</p>
+                        {% if profile.sport %}
+                            <p>{{ profile.sport }}</p>
+                        {% endif %}
 
                         {% if profile.specialty %}
                             <p>{{ profile.get_specialty_display }}</p>
@@ -50,7 +59,7 @@
 
                         <a
                             href="{% url detail_url_name profile.pk %}"
-                            class="profile-button"
+                            class="button button-primary"
                         >
                             View Profile
                         </a>
@@ -59,7 +68,7 @@
                 {% endfor %}
             </div>
         {% else %}
-            <div class="profile-card">
+            <div class="content-panel">
                 <p>No profiles are available yet.</p>
             </div>
         {% endif %}

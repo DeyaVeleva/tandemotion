@@ -1,0 +1,95 @@
+{% extends "shared/base.html" %}
+
+{% block title %}{{ training.title }} | TandeMotion{% endblock %}
+
+{% block content %}
+<section class="page-layout">
+    <div class="content-container">
+
+        <a href="{% url 'training-list' %}" class="profile-back">
+            &larr; Back to Trainings
+        </a>
+
+        <div class="content-panel">
+            <header class="page-header">
+                <p class="profile-label">TandeMotion / Training Details</p>
+
+                <h1 class="page-title">{{ training.title }}</h1>
+
+                {% if training.location %}
+                    <p class="page-description">{{ training.location }}</p>
+                {% endif %}
+            </header>
+
+            <div class="profile-fields">
+                <div class="profile-field">
+                    <span>Start</span>
+                    <p>
+                        {{ training.start|date:"F j, Y" }}
+                        at {{ training.start|time:"H:i" }}
+                    </p>
+                </div>
+
+                <div class="profile-field">
+                    <span>Finish</span>
+                    <p>
+                        {{ training.start|date:"F j, Y" }}
+                        at {{ training.finish|time:"H:i" }}
+                    </p>
+                </div>
+
+                <div class="profile-field">
+                    <span>Location</span>
+                    <p>{{ training.location|default:"Not specified" }}</p>
+                </div>
+
+                {% if training.types.all %}
+                    <div class="profile-field">
+                        <span>Training Type</span>
+                        <p>
+                            {% for type in training.types.all %}
+                                {{ type }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                {% endif %}
+
+                {% if training.description %}
+                    <div class="profile-field">
+                        <span>Description</span>
+                        <p>{{ training.description|linebreaksbr }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        
+            <div class="content-actions">
+                <a href="{% url 'training-edit' training.pk %}"
+                   class="button button-primary">
+                    Edit Training
+                </a>
+            
+                <a href="{% url 'training-delete' training.pk %}"
+                   class="button button-secondary">
+                    Delete Training
+                </a>
+                
+                <a href="{% url 'reflection-list' training.pk %}"
+                   class="button button-primary">
+                    View Athletes' Reflections
+                </a>
+                
+                <a href="{% url 'reflection-create' training.pk %}"
+                   class="button button-secondary">
+                    Add a Reflection
+                </a>
+            
+                <a href="{% url 'training-list' %}"
+                   class="button button-secondary">
+                    Back to Trainings
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

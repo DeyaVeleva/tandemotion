@@ -1,21 +1,35 @@
+
 /* ========================================
-   TANDEMOTION — SHARED PROFILE STYLES
+   TANDEMOTION — PROFILE AND SHARED CONTENT
    ======================================== */
 
 /* Main page layout */
-.profile-page {
+.page-layout {
     min-height: 70vh;
     padding: 50px 5%;
     background: #f5f7fa;
 }
 
-.profile-container {
+.content-container {
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
 }
 
-/* Profile headings */
+/* Shared headings */
+.page-title {
+    margin: 0 0 12px;
+    color: #1c2833;
+    font-size: 32px;
+}
+
+.page-description {
+    margin: 0 0 28px;
+    color: #657786;
+    font-size: 18px;
+}
+
+/* Profile-specific label */
 .profile-label {
     margin: 0 0 10px;
     color: #2471a3;
@@ -25,26 +39,15 @@
     text-transform: uppercase;
 }
 
-.profile-title {
-    margin: 0 0 12px;
-    color: #1c2833;
-    font-size: 32px;
-}
-
-.profile-subtitle {
-    margin: 0 0 28px;
-    color: #657786;
-    font-size: 18px;
-}
-
-/* Profile cards and details */
-.profile-card {
+/* Shared content panel */
+.content-panel {
     padding: 36px;
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
+/* Profile back link */
 .profile-back {
     display: inline-block;
     margin-bottom: 24px;
@@ -57,6 +60,7 @@
     color: #2471a3;
 }
 
+/* Profile image and placeholder */
 .profile-image,
 .profile-placeholder {
     width: 180px;
@@ -92,6 +96,7 @@
     min-width: 0;
 }
 
+/* Profile fields */
 .profile-fields {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -119,92 +124,27 @@
     font-size: 15px;
 }
 
-/* Buttons */
-.profile-actions {
+/* Shared content actions */
+.content-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 28px;
 }
 
-.profile-button {
-    display: inline-block;
-    padding: 12px 22px;
-    border: 1px solid #2471a3;
-    border-radius: 8px;
-    background: #2471a3;
-    color: #fff;
-    font: inherit;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.profile-button:hover {
-    background: #1b587f;
-}
-
-.profile-button--secondary {
+/* Secondary button modifier for the existing .button class */
+.button--secondary {
     background: #fff;
+    border-color: #2471a3;
     color: #2471a3;
 }
 
-.profile-button--secondary:hover {
+.button--secondary:hover {
     background: #edf4f9;
 }
 
-/* Profile forms */
-.profile-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.profile-form p {
-    margin: 0;
-}
-
-.profile-form label {
-    display: block;
-    margin-bottom: 7px;
-    color: #34495e;
-    font-weight: 600;
-}
-
-.profile-form input:not([type="checkbox"]):not([type="radio"]),
-.profile-form select,
-.profile-form textarea {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 11px 12px;
-    border: 1px solid #ccd5df;
-    border-radius: 8px;
-    background: #fff;
-    font: inherit;
-}
-
-.profile-form input:focus,
-.profile-form select:focus,
-.profile-form textarea:focus {
-    border-color: #2471a3;
-    outline: 2px solid #2471a3;
-    outline-offset: 2px;
-}
-
-.profile-form .helptext {
-    display: block;
-    margin-top: 5px;
-    color: #657786;
-    font-size: 13px;
-}
-
-.profile-form .errorlist {
-    color: #b42318;
-}
-
-/* Profile lists */
-.profile-list {
+/* Shared card grid */
+.card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, 280px);
     justify-content: start;
@@ -212,34 +152,34 @@
     gap: 24px;
 }
 
-.profile-list-item {
+/* Shared content cards */
+.content-card {
     box-sizing: border-box;
     width: 280px;
     padding: 24px;
     border-radius: 12px;
     background: #fff;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-.profile-list-item h2 {
+.content-card h2 {
     margin: 18px 0 8px;
     color: #1c2833;
     font-size: 20px;
 }
 
-.profile-list-item p {
+.content-card p {
     margin: 6px 0;
     color: #657786;
 }
 
-/* Center the profile photo */
-.profile-list-item .profile-image,
-.profile-list-item .profile-placeholder {
+/* Profile images inside cards */
+.content-card .profile-image,
+.content-card .profile-placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -250,14 +190,83 @@
     object-fit: cover;
 }
 
-/* Keep the action button centered */
-.profile-list-item .profile-button {
+/* Buttons inside cards */
+.content-card .button {
     margin-top: 16px;
 }
 
-/* Add-profile button */
-.profile-list-actions {
+/* Shared list header actions */
+.list-actions {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 24px;
+}
+
+/* Responsive profile details */
+@media (max-width: 700px) {
+    .profile-details-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-info {
+        width: 100%;
+    }
+
+    .profile-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .content-panel {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-layout {
+        padding: 32px 5%;
+    }
+
+    .page-title {
+        font-size: 27px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-card {
+        width: 100%;
+    }
+}
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-header .page-title {
+    margin-bottom: 8px;
+}
+
+.page-header .page-description {
+    margin-bottom: 0;
+}
+
+.list-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 24px;
+}
+
+.list-actions .button,
+.content-card .button {
+    min-height: auto;
+    padding: 10px 18px;
+    border-width: 1px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.card-grid {
+    margin-top: 0;
+    gap: 24px;
 }
